@@ -1,17 +1,19 @@
 package aplication;
 
-import entities.GameHelper;
+import java.util.Scanner;
+
+//import entities.GameHelper;
 import entities.SimpleDotCom;
 
 public class SimpleDotComGame {
 
-	
-
 	public static void main(String[] args) {
+		
+		Scanner sc= new Scanner(System.in);
 		
 		int numOfGuesses = 0;
 		
-		GameHelper helper = new GameHelper();
+		//GameHelper helper = new GameHelper();
 		
 		SimpleDotCom theDotCom = new SimpleDotCom();
 		
@@ -23,18 +25,25 @@ public class SimpleDotComGame {
 		
 		boolean isAlive = true;
 		
-		while (isAlive== true) {
-			String guess = helper.getUserInput("Insira um número");
+		
+		while (isAlive == true) {
+			//String guess = helper.getUserInput("Insira um número");
+			System.out.print("Insira um número ");
+			String guess = sc.nextLine();
+			
 			String result = theDotCom.checkYouself(guess);
 			numOfGuesses++;
+			
 			if(result.equals("KILL")) {
 				isAlive= false;
-			}
+				System.out.println("Você usou "+ numOfGuesses + " palpites");
+				
+			}			
 			
-			System.out.println("Você usou "+ numOfGuesses + " palpites");
-		}
+		} 
 		
-		
+	
+		sc.close();
 	}
 
 }
